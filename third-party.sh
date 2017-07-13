@@ -39,3 +39,10 @@ wget "http://downloads.sourceforge.net/project/libpng/zlib/1.2.8/zlib-1.2.8.tar.
 tar xvf zlib.tar.gz
 mv -f zlib-1.2.8 ./third-party/zlib
 rm zlib.tar.gz
+
+## libwebp ##
+wget "https://github.com/webmproject/libwebp/archive/v0.6.0.tar.gz" -O "./libwebp.tar.gz"
+tar xvf libwebp.tar.gz
+mv -f libwebp-0.6.0 ./third-party/libwebp
+rm libwebp.tar.gz
+
