@@ -23,10 +23,9 @@ wget "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/1.5.2.tar.gz" -O ".
 tar xvf libjpeg-turbo.tar.gz
 mv -f libjpeg-turbo-1.5.2 ./third-party/libjpeg-turbo
 cd ./third-party/libjpeg-turbo
-    cmake . || (echo ':MUST: need cmake' && exit 1)
+    cmake . || (echo ':MUST: need cmake'; exit 1)
     autoreconf -fiv
-    cd release
-    ../configure
+    ./configure
 cd -
 rm libjpeg-turbo.tar.gz
 
