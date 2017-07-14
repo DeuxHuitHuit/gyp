@@ -92,6 +92,15 @@
         },
         'cflags': [
             '-w', # supresses warnings
-        ]
+            '-fvisibility=hidden',
+            '-D PPM_SUPPORTED',
+        ],
+        'xcode_settings': {
+            'OTHER_CFLAGS': [
+                '-w', # supresses warnings
+                '-fvisibility=hidden',
+                '-D PPM_SUPPORTED',
+             ]
+        },
     }]
 }
