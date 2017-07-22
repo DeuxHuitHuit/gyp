@@ -11,10 +11,16 @@
             ],
         },
         'cflags': [
-            '-w',
+            '-w', # supresses warnings
             '-fvisibility=hidden',
-            '-D PNGLCONF_H'
+            '-D PNGLCONF_H',
         ],
+        'xcode_settings': {
+            'OTHER_CFLAGS': [
+                '-w', # supresses warnings
+                '-fvisibility=hidden',
+            ]
+        },
         'dependencies': [
             'zlib.gyp:zlib'
         ],
@@ -38,5 +44,20 @@
             '../third-party/libpng/pngwtran.c',
             '../third-party/libpng/pngwutil.c',
         ],
-    }]
+    }],
+    'configurations': {
+        'Debug': {
+            'cflags': [ '-g', '-O0' ],
+            'xcode_settings': {
+                'OTHER_CFLAGS': [ '-g', '-O0' ]
+            }
+        },
+        'Release': {
+            'cflags': [ '-g', '-O3' ],
+            'defines': [ 'NDEBUG' ],
+            'xcode_settings': {
+                'OTHER_CFLAGS': [ '-g', '-O3' ]
+            }
+        }
+    }
 }
