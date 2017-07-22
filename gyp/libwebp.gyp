@@ -30,9 +30,6 @@
             '-Wunused',
             '-Wvla'
         ],
-        'dependencies': [
-
-        ],
         'libraries': [
             '-lm'
         ],
@@ -40,5 +37,20 @@
             '../third-party/libwebp/src/enc/webp_enc.c',
             '../third-party/libwebp/src/dec/webp_dec.c',
         ],
-    }]
+    }],
+    'configurations': {
+        'Debug': {
+            'cflags': [ '-g', '-O0' ],
+            'xcode_settings': {
+                'OTHER_CFLAGS': [ '-g', '-O0' ]
+            }
+        },
+        'Release': {
+            'cflags': [ '-g', '-O3' ],
+            'defines': [ 'NDEBUG' ],
+            'xcode_settings': {
+                'OTHER_CFLAGS': [ '-g', '-O3' ]
+            }
+        }
+    },
 }

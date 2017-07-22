@@ -10,6 +10,16 @@
                 '../third-party/zlib/'
             ]
         },
+        'cflags': [
+            '-w', # supresses warnings
+            '-fvisibility=hidden',
+        ],
+        'xcode_settings': {
+            'OTHER_CFLAGS': [
+                '-w', # supresses warnings
+                '-fvisibility=hidden',
+            ]
+        },
         'sources': [
             '../third-party/zlib/adler32.c',
             '../third-party/zlib/compress.c',
@@ -27,5 +37,20 @@
             '../third-party/zlib/uncompr.c',
             '../third-party/zlib/zutil.c'
         ]
-    }]
+    }],
+    'configurations': {
+        'Debug': {
+            'cflags': [ '-g', '-O0' ],
+            'xcode_settings': {
+                'OTHER_CFLAGS': [ '-g', '-O0' ]
+            }
+        },
+        'Release': {
+            'cflags': [ '-g', '-O3' ],
+            'defines': [ 'NDEBUG' ],
+            'xcode_settings': {
+                'OTHER_CFLAGS': [ '-g', '-O3' ]
+            }
+        }
+    },
 }
