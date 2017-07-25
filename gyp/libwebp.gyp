@@ -1,65 +1,13 @@
+# from: https://github.com/pagespeed/page-speed/blob/master/deps/libwebp-0.2.0/libwebp.gyp
 {
-    'targets': [{
-        'target_name': 'libwebp',
-        'type': 'static_library',
-        'include_dirs': [
+    'targets': [
+        {
+          'target_name': 'libwebp_dec',
+          'type': 'static_library',
+          'include_dirs': [
             '../third-party/libwebp/src/',
-            '../third-party/libwebp/src/webp/',
-            '../third-party/libwebp/src/dsp/',
-        ],
-        'direct_dependent_settings': {
-            'include_dirs': [
-                '../third-party/libwebp/src/',
-                '../third-party/libwebp/src/webp/',
-                '../third-party/libwebp/src/dsp/',
-            ],
-        },
-        'cflags': [
-            '-fvisibility=hidden',
-            #'-Wall',
-            #'-Wconstant-conversion',
-            #'-Wdeclaration-after-statement',
-            #'-Wextra',
-            #'-Wfloat-conversion',
-            #'-Wformat -Wformat-nonliteral',
-            #'-Wformat -Wformat-security',
-            #'-Wmissing-declarations',
-            #'-Wmissing-prototypes',
-            #'-Wold-style-definition',
-            #'-Wparentheses-equality',
-            #'-Wshadow',
-            #'-Wshorten-64-to-32',
-            #'-Wunreachable-code',
-            #'-Wunused-but-set-variable',
-            #'-Wunused',
-            #'-Wvla',
-            '-w',
-        ],
-        'xcode_settings': {
-            'OTHER_CFLAGS': [
-                '-fvisibility=hidden',
-                '-w',
-            ]
-        },
-        'libraries': [
-            '-lm'
-        ],
-        'conditions': [
-            ['OS == "mac"', {
-                'xcode_settings': {
-                    'OTHER_CFLAGS': [
-                        '-fno-common',
-                        '-DHAVE_GLUT_GLUT_H',
-                        '-I/opt/local/include',
-                    ]
-                }
-            }],
-        ],
-        'defines': [
-            'ENABLE_WEBP'
-        ],
-        'sources': [
-            # DEC_OBJS =
+          ],
+          'sources': [
             '../third-party/libwebp/src/dec/alpha_dec.c',
             '../third-party/libwebp/src/dec/buffer_dec.c',
             '../third-party/libwebp/src/dec/frame_dec.c',
@@ -70,73 +18,50 @@
             '../third-party/libwebp/src/dec/vp8_dec.c',
             '../third-party/libwebp/src/dec/vp8l_dec.c',
             '../third-party/libwebp/src/dec/webp_dec.c',
-            # DSP_DEC_OBJS =
+          ],
+        },
+        {
+          'target_name': 'libwebp_dsp',
+          'type': 'static_library',
+          'include_dirs': [
+            '../third-party/libwebp/src/',
+          ],
+          'sources': [
             '../third-party/libwebp/src/dsp/alpha_processing.c',
-            '../third-party/libwebp/src/dsp/alpha_processing_mips_dsp_r2.c',
-            '../third-party/libwebp/src/dsp/alpha_processing_neon.c',
             '../third-party/libwebp/src/dsp/alpha_processing_sse2.c',
-            '../third-party/libwebp/src/dsp/alpha_processing_sse41.c',
+            '../third-party/libwebp/src/dsp/argb.c',
+            '../third-party/libwebp/src/dsp/argb_sse2.c',
             '../third-party/libwebp/src/dsp/cpu.c',
+            '../third-party/libwebp/src/dsp/cost.c',
             '../third-party/libwebp/src/dsp/dec.c',
-            '../third-party/libwebp/src/dsp/dec_clip_tables.c',
-            '../third-party/libwebp/src/dsp/dec_mips32.c',
-            '../third-party/libwebp/src/dsp/dec_mips_dsp_r2.c',
-            '../third-party/libwebp/src/dsp/dec_msa.c',
-            '../third-party/libwebp/src/dsp/dec_neon.c',
             '../third-party/libwebp/src/dsp/dec_sse2.c',
-            '../third-party/libwebp/src/dsp/dec_sse41.c',
+            '../third-party/libwebp/src/dsp/dec_clip_tables.c',
+            '../third-party/libwebp/src/dsp/dec_sse2.c',
+            '../third-party/libwebp/src/dsp/enc.c',
+            '../third-party/libwebp/src/dsp/enc_sse2.c',
             '../third-party/libwebp/src/dsp/filters.c',
-            '../third-party/libwebp/src/dsp/filters_mips_dsp_r2.c',
-            '../third-party/libwebp/src/dsp/filters_msa.c',
-            '../third-party/libwebp/src/dsp/filters_neon.c',
             '../third-party/libwebp/src/dsp/filters_sse2.c',
             '../third-party/libwebp/src/dsp/lossless.c',
-            '../third-party/libwebp/src/dsp/lossless_mips_dsp_r2.c',
-            '../third-party/libwebp/src/dsp/lossless_msa.c',
-            '../third-party/libwebp/src/dsp/lossless_neon.c',
             '../third-party/libwebp/src/dsp/lossless_sse2.c',
+            '../third-party/libwebp/src/dsp/lossless_enc.c',
+            '../third-party/libwebp/src/dsp/lossless_enc_sse2.c',
             '../third-party/libwebp/src/dsp/rescaler.c',
-            '../third-party/libwebp/src/dsp/rescaler_mips32.c',
-            '../third-party/libwebp/src/dsp/rescaler_mips_dsp_r2.c',
-            '../third-party/libwebp/src/dsp/rescaler_msa.c',
-            '../third-party/libwebp/src/dsp/rescaler_neon.c',
             '../third-party/libwebp/src/dsp/rescaler_sse2.c',
             '../third-party/libwebp/src/dsp/upsampling.c',
-            '../third-party/libwebp/src/dsp/upsampling_mips_dsp_r2.c',
-            '../third-party/libwebp/src/dsp/upsampling_msa.c',
-            '../third-party/libwebp/src/dsp/upsampling_neon.c',
             '../third-party/libwebp/src/dsp/upsampling_sse2.c',
             '../third-party/libwebp/src/dsp/yuv.c',
-            '../third-party/libwebp/src/dsp/yuv_mips32.c',
-            '../third-party/libwebp/src/dsp/yuv_mips_dsp_r2.c',
-            #'../third-party/libwebp/src/dsp/yuv_neon.c',
             '../third-party/libwebp/src/dsp/yuv_sse2.c',
-            # DSP_ENC_OBJS =
-            '../third-party/libwebp/src/dsp/cost.c',
-            '../third-party/libwebp/src/dsp/cost_mips32.c',
-            '../third-party/libwebp/src/dsp/cost_mips_dsp_r2.c',
-            '../third-party/libwebp/src/dsp/cost_sse2.c',
-            '../third-party/libwebp/src/dsp/enc.c',
-            '../third-party/libwebp/src/dsp/enc_avx2.c',
-            '../third-party/libwebp/src/dsp/enc_mips32.c',
-            '../third-party/libwebp/src/dsp/enc_mips_dsp_r2.c',
-            '../third-party/libwebp/src/dsp/enc_msa.c',
-            '../third-party/libwebp/src/dsp/enc_neon.c',
-            '../third-party/libwebp/src/dsp/enc_sse2.c',
-            '../third-party/libwebp/src/dsp/enc_sse41.c',
-            '../third-party/libwebp/src/dsp/lossless_enc.c',
-            '../third-party/libwebp/src/dsp/lossless_enc_mips32.c',
-            '../third-party/libwebp/src/dsp/lossless_enc_mips_dsp_r2.c',
-            '../third-party/libwebp/src/dsp/lossless_enc_msa.c',
-            '../third-party/libwebp/src/dsp/lossless_enc_neon.c',
-            '../third-party/libwebp/src/dsp/lossless_enc_sse2.c',
-            '../third-party/libwebp/src/dsp/lossless_enc_sse41.c',
-            #'../third-party/libwebp/src/dsp/ssim.c',
-            #'../third-party/libwebp/src/dsp/ssim_sse2.c',
-            # ENC_OBJS =
+          ],
+        },
+        {
+          'target_name': 'libwebp_enc',
+          'type': 'static_library',
+          'include_dirs': [
+            '../third-party/libwebp/src/',
+          ],
+          'sources': [
             '../third-party/libwebp/src/enc/alpha_enc.c',
             '../third-party/libwebp/src/enc/analysis_enc.c',
-            #'../third-party/libwebp/src/enc/backward_references_cost_enc.c',
             '../third-party/libwebp/src/enc/backward_references_enc.c',
             '../third-party/libwebp/src/enc/config_enc.c',
             '../third-party/libwebp/src/enc/cost_enc.c',
@@ -146,8 +71,8 @@
             '../third-party/libwebp/src/enc/histogram_enc.c',
             '../third-party/libwebp/src/enc/iterator_enc.c',
             '../third-party/libwebp/src/enc/near_lossless_enc.c',
-            '../third-party/libwebp/src/enc/picture_enc.c',
             '../third-party/libwebp/src/enc/picture_csp_enc.c',
+            '../third-party/libwebp/src/enc/picture_enc.c',
             '../third-party/libwebp/src/enc/picture_psnr_enc.c',
             '../third-party/libwebp/src/enc/picture_rescale_enc.c',
             '../third-party/libwebp/src/enc/picture_tools_enc.c',
@@ -158,72 +83,59 @@
             '../third-party/libwebp/src/enc/tree_enc.c',
             '../third-party/libwebp/src/enc/vp8l_enc.c',
             '../third-party/libwebp/src/enc/webp_enc.c',
-            # UTILS_DEC_OBJS =
+          ],
+        },
+        {
+          'target_name': 'libwebp_utils',
+          'type': 'static_library',
+          'include_dirs': [
+            '../third-party/libwebp/src/',
+          ],
+          'sources': [
             '../third-party/libwebp/src/utils/bit_reader_utils.c',
+            '../third-party/libwebp/src/utils/bit_writer_utils.c',
             '../third-party/libwebp/src/utils/color_cache_utils.c',
             '../third-party/libwebp/src/utils/filters_utils.c',
             '../third-party/libwebp/src/utils/huffman_utils.c',
+            '../third-party/libwebp/src/utils/huffman_encode_utils.c',
+            '../third-party/libwebp/src/utils/quant_levels_utils.c',
             '../third-party/libwebp/src/utils/quant_levels_dec_utils.c',
             '../third-party/libwebp/src/utils/random_utils.c',
             '../third-party/libwebp/src/utils/rescaler_utils.c',
             '../third-party/libwebp/src/utils/thread_utils.c',
             '../third-party/libwebp/src/utils/utils.c',
-            # UTILS_ENC_OBJS =
-            '../third-party/libwebp/src/utils/bit_writer_utils.c',
-            '../third-party/libwebp/src/utils/huffman_encode_utils.c',
-            '../third-party/libwebp/src/utils/quant_levels_utils.c',
-            # HDRS =
-            '../third-party/libwebp/src/dec/alphai_dec.h',
-            '../third-party/libwebp/src/dec/common_dec.h',
-            '../third-party/libwebp/src/dec/vp8_dec.h',
-            '../third-party/libwebp/src/dec/vp8i_dec.h',
-            '../third-party/libwebp/src/dec/vp8li_dec.h',
-            '../third-party/libwebp/src/dec/webpi_dec.h',
-            '../third-party/libwebp/src/dsp/common_sse2.h',
-            '../third-party/libwebp/src/dsp/dsp.h',
-            '../third-party/libwebp/src/dsp/lossless.h',
-            '../third-party/libwebp/src/dsp/lossless_common.h',
-            '../third-party/libwebp/src/dsp/mips_macro.h',
-            '../third-party/libwebp/src/dsp/msa_macro.h',
-            '../third-party/libwebp/src/dsp/neon.h',
-            '../third-party/libwebp/src/dsp/yuv.h',
-            '../third-party/libwebp/src/enc/backward_references_enc.h',
-            '../third-party/libwebp/src/enc/cost_enc.h',
-            '../third-party/libwebp/src/enc/delta_palettization_enc.h',
-            '../third-party/libwebp/src/enc/histogram_enc.h',
-            '../third-party/libwebp/src/enc/vp8i_enc.h',
-            '../third-party/libwebp/src/enc/vp8li_enc.h',
-            '../third-party/libwebp/src/mux/animi.h',
-            '../third-party/libwebp/src/mux/muxi.h',
-            '../third-party/libwebp/src/utils/bit_reader_utils.h',
-            '../third-party/libwebp/src/utils/bit_reader_inl_utils.h',
-            '../third-party/libwebp/src/utils/bit_writer_utils.h',
-            '../third-party/libwebp/src/utils/color_cache_utils.h',
-            '../third-party/libwebp/src/utils/endian_inl_utils.h',
-            '../third-party/libwebp/src/utils/filters_utils.h',
-            '../third-party/libwebp/src/utils/huffman_utils.h',
-            '../third-party/libwebp/src/utils/huffman_encode_utils.h',
-            '../third-party/libwebp/src/utils/quant_levels_utils.h',
-            '../third-party/libwebp/src/utils/quant_levels_dec_utils.h',
-            '../third-party/libwebp/src/utils/random_utils.h',
-            '../third-party/libwebp/src/utils/rescaler_utils.h',
-            '../third-party/libwebp/src/utils/thread_utils.h',
-            '../third-party/libwebp/src/utils/utils.h',
-            '../third-party/libwebp/src/webp/format_constants.h',
+          ],
+        },
+        {
+        'target_name': 'libwebp',
+        'type': 'none',
+        'dependencies' : [
+          'libwebp_dec',
+          'libwebp_dsp',
+          'libwebp_enc',
+          'libwebp_utils',
+        ],
+        'direct_dependent_settings': {
+            'include_dirs': [
+              '../third-party/libwebp/src/',
+            ],
+        },
+        'conditions': [
+          ['OS!="win"', {'product_name': 'webp'}],
         ],
     }],
     'configurations': {
         'Debug': {
-            'cflags': [ '-g', '-O0' ],
+            'cflags': [ '-w', '-g', '-O0' ],
             'xcode_settings': {
-                'OTHER_CFLAGS': [ '-g', '-O0' ]
+                'OTHER_CFLAGS': [ '-w', '-g', '-O0' ]
             }
         },
         'Release': {
-            'cflags': [ '-g', '-O3' ],
+            'cflags': [ '-w', '-g', '-O3' ],
             'defines': [ 'NDEBUG' ],
             'xcode_settings': {
-                'OTHER_CFLAGS': [ '-g', '-O3' ]
+                'OTHER_CFLAGS': [ '-w', '-g', '-O3' ]
             }
         }
     },
