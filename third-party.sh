@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## libpng ##
-wget "https://jaist.dl.sourceforge.net/project/libpng/libpng16/1.6.29/libpng-1.6.29.tar.gz" -O "./libpng.tar.gz"
+wget "https://jaist.dl.sourceforge.net/project/libpng/libpng16/1.6.29/libpng-1.6.29.tar.gz" -O "./libpng.tar.gz" --no-check-certificate
 tar xvf libpng.tar.gz
 mv -f libpng-1.6.29 ./third-party/libpng
 #fix Linux compile error
@@ -17,7 +17,7 @@ cd -
 rm libpng.tar.gz
 
 ## libjpeg-turbo ##
-wget "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/1.5.2.tar.gz" -O "./libjpeg-turbo.tar.gz"
+wget "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/1.5.2.tar.gz" -O "./libjpeg-turbo.tar.gz" --no-check-certificate
 tar xvf libjpeg-turbo.tar.gz
 mv -f libjpeg-turbo-1.5.2 ./third-party/libjpeg-turbo
 cd ./third-party/libjpeg-turbo
@@ -28,19 +28,19 @@ cd -
 rm libjpeg-turbo.tar.gz
 
 ## giflib ##
-wget "https://jaist.dl.sourceforge.net/project/giflib/giflib-5.1.4.tar.bz2" -O "./giflib.tar.gz"
+wget "https://jaist.dl.sourceforge.net/project/giflib/giflib-5.1.4.tar.bz2" -O "./giflib.tar.gz" --no-check-certificate
 tar xvf giflib.tar.gz
 mv -f giflib-5.1.4 ./third-party/giflib
 rm giflib.tar.gz
 
 ## zlib ##
-wget "http://downloads.sourceforge.net/project/libpng/zlib/1.2.8/zlib-1.2.8.tar.gz" -O "./zlib.tar.gz"
+wget "https://phoenixnap.dl.sourceforge.net/project/libpng/zlib/1.2.8/zlib-1.2.8.tar.gz" -O "./zlib.tar.gz" --no-check-certificate
 tar xvf zlib.tar.gz
 mv -f zlib-1.2.8 ./third-party/zlib
 rm zlib.tar.gz
 
 ## libwebp ##
-wget "https://github.com/webmproject/libwebp/archive/v0.6.0.tar.gz" -O "./libwebp.tar.gz"
+wget "https://github.com/webmproject/libwebp/archive/v0.6.0.tar.gz" -O "./libwebp.tar.gz" --no-check-certificate
 tar xvf libwebp.tar.gz
 mv -f libwebp-0.6.0 ./third-party/libwebp
 rm libwebp.tar.gz
