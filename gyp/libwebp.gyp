@@ -1,13 +1,13 @@
 # from: https://github.com/pagespeed/page-speed/blob/master/deps/libwebp-0.2.0/libwebp.gyp
 {
-    'targets': [
-        {
-          'target_name': 'libwebp_dec',
-          'type': 'static_library',
-          'include_dirs': [
+    'includes': [ 'common.gypi' ],
+    'targets': [{
+        'target_name': 'libwebp_dec',
+        'type': 'static_library',
+        'include_dirs': [
             '../third-party/libwebp/src/',
-          ],
-          'sources': [
+        ],
+        'sources': [
             '../third-party/libwebp/src/dec/alpha_dec.c',
             '../third-party/libwebp/src/dec/buffer_dec.c',
             '../third-party/libwebp/src/dec/frame_dec.c',
@@ -18,15 +18,14 @@
             '../third-party/libwebp/src/dec/vp8_dec.c',
             '../third-party/libwebp/src/dec/vp8l_dec.c',
             '../third-party/libwebp/src/dec/webp_dec.c',
-          ],
-        },
-        {
-          'target_name': 'libwebp_dsp',
-          'type': 'static_library',
-          'include_dirs': [
+        ],
+    }, {
+        'target_name': 'libwebp_dsp',
+        'type': 'static_library',
+        'include_dirs': [
             '../third-party/libwebp/src/',
-          ],
-          'sources': [
+        ],
+        'sources': [
             '../third-party/libwebp/src/dsp/alpha_processing.c',
             '../third-party/libwebp/src/dsp/alpha_processing_sse2.c',
             '../third-party/libwebp/src/dsp/argb.c',
@@ -51,15 +50,14 @@
             '../third-party/libwebp/src/dsp/upsampling_sse2.c',
             '../third-party/libwebp/src/dsp/yuv.c',
             '../third-party/libwebp/src/dsp/yuv_sse2.c',
-          ],
-        },
-        {
-          'target_name': 'libwebp_enc',
-          'type': 'static_library',
-          'include_dirs': [
+        ],
+    }, {
+        'target_name': 'libwebp_enc',
+        'type': 'static_library',
+        'include_dirs': [
             '../third-party/libwebp/src/',
-          ],
-          'sources': [
+        ],
+        'sources': [
             '../third-party/libwebp/src/enc/alpha_enc.c',
             '../third-party/libwebp/src/enc/analysis_enc.c',
             '../third-party/libwebp/src/enc/backward_references_enc.c',
@@ -83,15 +81,14 @@
             '../third-party/libwebp/src/enc/tree_enc.c',
             '../third-party/libwebp/src/enc/vp8l_enc.c',
             '../third-party/libwebp/src/enc/webp_enc.c',
-          ],
-        },
-        {
-          'target_name': 'libwebp_utils',
-          'type': 'static_library',
-          'include_dirs': [
+        ],
+    }, {
+        'target_name': 'libwebp_utils',
+        'type': 'static_library',
+        'include_dirs': [
             '../third-party/libwebp/src/',
-          ],
-          'sources': [
+        ],
+        'sources': [
             '../third-party/libwebp/src/utils/bit_reader_utils.c',
             '../third-party/libwebp/src/utils/bit_writer_utils.c',
             '../third-party/libwebp/src/utils/color_cache_utils.c',
@@ -104,16 +101,15 @@
             '../third-party/libwebp/src/utils/rescaler_utils.c',
             '../third-party/libwebp/src/utils/thread_utils.c',
             '../third-party/libwebp/src/utils/utils.c',
-          ],
-        },
-        {
+        ],
+    }, {
         'target_name': 'libwebp',
         'type': 'none',
         'dependencies' : [
-          'libwebp_dec',
-          'libwebp_dsp',
-          'libwebp_enc',
-          'libwebp_utils',
+            'libwebp_dec',
+            'libwebp_dsp',
+            'libwebp_enc',
+            'libwebp_utils',
         ],
         'direct_dependent_settings': {
             'include_dirs': [
@@ -121,22 +117,7 @@
             ],
         },
         'conditions': [
-          ['OS!="win"', {'product_name': 'webp'}],
+            ['OS!="win"', {'product_name': 'webp'}],
         ],
     }],
-    'configurations': {
-        'Debug': {
-            'cflags': [ '-w', '-g', '-O0' ],
-            'xcode_settings': {
-                'OTHER_CFLAGS': [ '-w', '-g', '-O0' ]
-            }
-        },
-        'Release': {
-            'cflags': [ '-w', '-g', '-O3' ],
-            'defines': [ 'NDEBUG' ],
-            'xcode_settings': {
-                'OTHER_CFLAGS': [ '-w', '-g', '-O3' ]
-            }
-        }
-    },
 }

@@ -1,4 +1,5 @@
 {
+    'includes': [ 'common.gypi' ],
     'targets': [{
         'target_name': 'zlib',
         'type': 'static_library',
@@ -8,16 +9,6 @@
         'direct_dependent_settings': {
             'include_dirs': [
                 '../third-party/zlib/'
-            ]
-        },
-        'cflags': [
-            '-w', # supresses warnings
-            '-fvisibility=hidden',
-        ],
-        'xcode_settings': {
-            'OTHER_CFLAGS': [
-                '-w', # supresses warnings
-                '-fvisibility=hidden',
             ]
         },
         'sources': [
@@ -38,19 +29,4 @@
             '../third-party/zlib/zutil.c'
         ]
     }],
-    'configurations': {
-        'Debug': {
-            'cflags': [ '-g', '-O0' ],
-            'xcode_settings': {
-                'OTHER_CFLAGS': [ '-g', '-O0' ]
-            }
-        },
-        'Release': {
-            'cflags': [ '-g', '-O3' ],
-            'defines': [ 'NDEBUG' ],
-            'xcode_settings': {
-                'OTHER_CFLAGS': [ '-g', '-O3' ]
-            }
-        }
-    },
 }
