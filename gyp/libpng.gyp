@@ -1,4 +1,5 @@
 {
+    'includes': [ 'common.gypi' ],
     'targets': [{
         'target_name': 'libpng',
         'type': 'static_library',
@@ -9,17 +10,6 @@
             'include_dirs': [
                 '../third-party/libpng',
             ],
-        },
-        'cflags': [
-            '-w', # supresses warnings
-            '-fvisibility=hidden',
-            '-D PNGLCONF_H',
-        ],
-        'xcode_settings': {
-            'OTHER_CFLAGS': [
-                '-w', # supresses warnings
-                '-fvisibility=hidden',
-            ]
         },
         'dependencies': [
             'zlib.gyp:zlib'
@@ -45,19 +35,4 @@
             '../third-party/libpng/pngwutil.c',
         ],
     }],
-    'configurations': {
-        'Debug': {
-            'cflags': [ '-g', '-O0' ],
-            'xcode_settings': {
-                'OTHER_CFLAGS': [ '-g', '-O0' ]
-            }
-        },
-        'Release': {
-            'cflags': [ '-g', '-O3' ],
-            'defines': [ 'NDEBUG' ],
-            'xcode_settings': {
-                'OTHER_CFLAGS': [ '-g', '-O3' ]
-            }
-        }
-    }
 }

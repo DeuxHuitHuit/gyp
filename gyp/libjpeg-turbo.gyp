@@ -1,7 +1,11 @@
 {
+    'includes': [ 'common.gypi' ],
     'targets': [{
         'target_name': 'libjpeg-turbo',
         'type': 'static_library',
+        'defines': [
+            'PPM_SUPPORTED',
+        ],
         'sources': [
             "../third-party/libjpeg-turbo/bmp.c",
             "../third-party/libjpeg-turbo/cdjpeg.c",
@@ -90,32 +94,5 @@
                 '../third-party/libjpeg-turbo',
             ],
         },
-        'cflags': [
-            '-w', # supresses warnings
-            '-fvisibility=hidden',
-            '-D PPM_SUPPORTED',
-        ],
-        'xcode_settings': {
-            'OTHER_CFLAGS': [
-                '-w', # supresses warnings
-                '-fvisibility=hidden',
-                '-D PPM_SUPPORTED',
-             ]
-        },
     }],
-    'configurations': {
-        'Debug': {
-            'cflags': [ '-g', '-O0' ],
-            'xcode_settings': {
-                'OTHER_CFLAGS': [ '-g', '-O0' ]
-            }
-        },
-        'Release': {
-            'cflags': [ '-g', '-O3' ],
-            'defines': [ 'NDEBUG' ],
-            'xcode_settings': {
-                'OTHER_CFLAGS': [ '-g', '-O3' ]
-            }
-        }
-    },
 }
