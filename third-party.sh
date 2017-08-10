@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+## clean up
+rm -rf ./third-party/*
+
 ## libpng ##
 wget "https://downloads.sourceforge.net/project/libpng/libpng16/1.6.31/libpng-1.6.31.tar.gz" -O "./libpng.tar.gz" --no-check-certificate
 tar xvf libpng.tar.gz
