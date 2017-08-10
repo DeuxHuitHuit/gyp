@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-exit 1
+## clean up
+rm -rf ./third-party/*
 
 ## libpng ##
 wget "https://downloads.sourceforge.net/project/libpng/libpng16/1.6.31/libpng-1.6.31.tar.gz" -O "./libpng.tar.gz" --no-check-certificate
@@ -30,13 +31,13 @@ cd -
 rm libjpeg-turbo.tar.gz
 
 ## giflib ##
-wget "https://jaist.dl.sourceforge.net/project/giflib/giflib-5.1.4.tar.bz2" -O "./giflib.tar.gz" --no-check-certificate
+wget "https://downloads.sourceforge.net/project/giflib/giflib-5.1.4.tar.bz2" -O "./giflib.tar.gz" --no-check-certificate
 tar xvf giflib.tar.gz
 mv -f giflib-5.1.4 ./third-party/giflib
 rm giflib.tar.gz
 
 ## zlib ##
-wget "https://phoenixnap.dl.sourceforge.net/project/libpng/zlib/1.2.8/zlib-1.2.8.tar.gz" -O "./zlib.tar.gz" --no-check-certificate
+wget "https://downloads.sourceforge.net/project/libpng/zlib/1.2.8/zlib-1.2.8.tar.gz" -O "./zlib.tar.gz" --no-check-certificate
 tar xvf zlib.tar.gz
 mv -f zlib-1.2.8 ./third-party/zlib
 rm zlib.tar.gz
