@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+## for safety
+mkdir -p ./third-party
+
 ## clean up
 rm -rf ./third-party/*
 
