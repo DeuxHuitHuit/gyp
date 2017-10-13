@@ -7,9 +7,9 @@ mkdir -p ./third-party
 rm -rf ./third-party/*
 
 ## libpng ##
-wget "https://downloads.sourceforge.net/project/libpng/libpng16/1.6.31/libpng-1.6.31.tar.gz" -O "./libpng.tar.gz" --no-check-certificate --user-agent="Wget/1.19.1 (Linux)"
+wget "https://downloads.sourceforge.net/project/libpng/libpng16/1.6.34/libpng-1.6.34.tar.gz" -O "./libpng.tar.gz" --no-check-certificate --user-agent="Wget/1.19.1 (Linux)"
 tar xvf libpng.tar.gz
-mv -f libpng-1.6.31 ./third-party/libpng
+mv -f libpng-1.6.34 ./third-party/libpng
 #fix Linux compile error
 cd ./third-party/libpng/
     cp ./scripts/pnglibconf.h.prebuilt ./pnglibconf.h
