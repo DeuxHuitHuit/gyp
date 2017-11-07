@@ -40,6 +40,12 @@ rm libjpeg-turbo.tar.gz
 wget "https://downloads.sourceforge.net/project/giflib/giflib-5.1.4.tar.bz2" -O "giflib.tar.gz" --no-check-certificate --user-agent="Wget/1.19.1 (Linux)"
 tar xvf giflib.tar.gz
 mv -f giflib-5.1.4 ./third-party/giflib
+cd ./third-party/giflib
+    if [[ "$(uname)" != "Darwin" && "$(uname)" != "Linux" ]]; then
+        touch unistd.h
+        touch stdbool.h
+    fi
+cd -
 rm giflib.tar.gz
 
 ## zlib ##
