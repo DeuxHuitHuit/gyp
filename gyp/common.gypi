@@ -20,12 +20,7 @@
             ],
             'MACOSX_DEPLOYMENT_TARGET':'10.9', # some how, this does not work
         },
-        'msvs_disabled_warnings': [4018, 4013],
-        'msvs_settings': {
-            'VCLinkerTool': {
-                'DisableSpecificWarnings': [4221, 4006], # some how, does not works
-            },
-        },
+        'msvs_disabled_warnings': [4018, 4013, 4006, 4221], # some how, this does not work
         'conditions': [
             ['OS == "win"', {
                 'defines': [

@@ -19,6 +19,9 @@
                 'include_dirs': [
                     '../third-party/giflib'
                 ],
+                'sources': [
+                    '../third-party/giflib/reallocarray.c',
+                ],
             }],
         ],
         'sources': [

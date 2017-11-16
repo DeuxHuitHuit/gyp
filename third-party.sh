@@ -44,6 +44,8 @@ cd ./third-party/giflib
     if [[ "$(uname)" != "Darwin" && "$(uname)" != "Linux" ]]; then
         touch unistd.h
         touch stdbool.h
+        printf "#define bool short\n#define true 1\n#define false 0" > stdbool.h
+        wget "https://github.com/robertbachmann/openbsd-libc/raw/73b968256c8b7044a9d0c34a58bc4f5ed5f6b4e6/stdlib/reallocarray.c" --no-check-certificate --user-agent="Wget/1.19.1 (Linux)"
     fi
 cd -
 rm giflib.tar.gz
